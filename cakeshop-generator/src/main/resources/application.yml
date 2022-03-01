@@ -1,0 +1,17 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///mycakeshop
+    username: root
+    password: 123456
+  servlet:
+    multipart:
+      max-request-size: 20MB
+      max-file-size: 2MB
+#  redis:
+#    host: 120.76.201.50
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

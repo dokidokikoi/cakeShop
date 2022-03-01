@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.harukaze.api.mapper.GoodsMapper">
+    <select id="selectGoodsPage" resultType="Goods">
+        select * from t_goods
+        <where>
+            1 = 1
+            <if test="type == 'cheep'">
+                and price between 0 and 50
+            </if>
+            <if test="query != null">
+                and name like #{query}
+            </if>
+            <if test="isAll == false">
+                and status != 0 and stock > 0
+            </if>
+            <if test="type == 'hot'">
+                order by sale desc
+            </if>
+            <if test="type != 'hot'">
+                order by create_date desc
+            </if>
+        </where>
+    </select>
+
+    <select id="selectGoodsPageByTypeId" resultType="Goods">
+        select t_goods.* from t_goods, t_goods_type where t_goods_type.type_id = #{typeId} and t_goods_type.goods_id = t_goods.id
+    </select>
+</mapper>

@@ -1,0 +1,23 @@
+server:
+  port: 9000
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql:///mycakeshop
+    username: root
+    password: 
+  servlet:
+    multipart:
+      max-request-size: 20MB
+      max-file-size: 2MB
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**Mapper.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.harukaze.api.entity
+
+qiniu:
+  accessKey: 
+  accessSecretKey: 
